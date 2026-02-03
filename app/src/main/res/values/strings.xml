@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="search">Search</string>
+    <string name="Last_news">Last News</string>
+    <string name="Explore_categories">Explore Categories</string>
+    <string name="read_more">Read more</string>
+</resources>
