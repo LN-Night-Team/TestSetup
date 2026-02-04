@@ -1,7 +1,7 @@
-package com.example.test
+package com.example.test.data.di
 
-import com.example.test.data.NewsRepositoryImpl
-import com.example.test.domain.NewsRepository
+import com.example.test.data.repository.NewsRepositoryImpl
+import com.example.test.domain.repository.NewsRepository
 import com.example.test.domain.usecases.GetNewsUseCase
 import com.example.test.domain.usecases.NewsUseCase
 import com.example.test.presentation.viewmodel.MainViewModel

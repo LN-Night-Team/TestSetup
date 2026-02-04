@@ -1,8 +1,8 @@
 package com.example.test.presentation
 
-import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
@@ -43,11 +43,12 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.example.test.R
-import com.example.test.domain.entities.NewsItem
+import com.example.test.presentation.navigation.NavNewsItem
 import com.example.test.presentation.viewmodel.MainViewModel
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel) {
+fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel,
+               onClick: (NavNewsItem) -> Unit) {
     Scaffold(
         modifier.fillMaxSize()
     ) { innerPadding ->
@@ -107,7 +108,7 @@ fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel) {
                     IconButton(
                         onClick = {/*Todo*/ }
                     ) {
-                        Icon(Icons.Default.ArrowForward, contentDescription = null)
+                        Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
                     }
                 }
             }
@@ -116,7 +117,11 @@ fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 items(articles) { article ->
-                    NewsCard(newsItem = article)
+                    NewsCard(
+                        newsItem = article,
+                        onClick = {
+                            onClick(article)
+                        })
                 }
             }
             Spacer(modifier.padding(vertical = 10.dp))
@@ -137,13 +142,19 @@ fun CustomTextField(onValueChange: () -> Unit, value: String) {
 }
 
 @Composable
-fun NewsCard(modifier: Modifier = Modifier, newsItem: NewsItem) {
+fun NewsCard(
+    modifier: Modifier = Modifier, newsItem: NavNewsItem,
+    onClick: () -> Unit
+) {
     Column(
         Modifier
             .padding(horizontal = 10.dp)
             .height(250.dp)
             .width(300.dp)
-            .clip(RoundedCornerShape(5)),
+            .clip(RoundedCornerShape(5))
+            .clickable {
+                onClick()
+            },
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

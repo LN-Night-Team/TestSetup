@@ -2,12 +2,10 @@ package com.example.test.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
-import com.example.test.domain.entities.NewsItem
-import com.example.test.domain.usecases.GetNewsUseCase
 import com.example.test.domain.usecases.NewsUseCase
-import kotlinx.coroutines.Dispatchers
+import com.example.test.presentation.navigation.NavNewsItem
+import com.example.test.presentation.navigation.toPresentation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -15,7 +13,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val newsUseCase: NewsUseCase
 ) : ViewModel() {
-    private val _news = MutableStateFlow<List<NewsItem>>(emptyList())
+    private val _news = MutableStateFlow<List<NavNewsItem>>(emptyList())
     val news = _news.asStateFlow()
 
     init {
@@ -27,7 +25,7 @@ class MainViewModel(
             newsUseCase.getNews().collect { result ->
                 result.fold(
                     onSuccess = { result ->
-                        _news.value = result
+                        _news.value = result.map { it.toPresentation() }
                         Log.d("WOW", "${_news.value}")
                     },
                     onFailure = { error ->

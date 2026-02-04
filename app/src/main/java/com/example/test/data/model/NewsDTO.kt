@@ -1,4 +1,4 @@
-package com.example.test.data
+package com.example.test.data.model
 
 import com.example.test.domain.entities.NewsItem
 import kotlinx.serialization.Serializable

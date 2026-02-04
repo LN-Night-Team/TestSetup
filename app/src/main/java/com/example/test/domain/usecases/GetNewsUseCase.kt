@@ -1,6 +1,6 @@
 package com.example.test.domain.usecases
 
-import com.example.test.domain.NewsRepository
+import com.example.test.domain.repository.NewsRepository
 import com.example.test.domain.entities.NewsItem
 import kotlinx.coroutines.flow.Flow
 

@@ -1,8 +1,10 @@
-package com.example.test.data
+package com.example.test.data.repository
 
 import android.util.Log
-import com.example.test.BASE_URL
-import com.example.test.domain.NewsRepository
+import com.example.test.data.model.NewsResponse
+import com.example.test.data.di.BASE_URL
+import com.example.test.data.model.toDomain
+import com.example.test.domain.repository.NewsRepository
 import com.example.test.domain.entities.NewsItem
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -17,7 +19,7 @@ class NewsRepositoryImpl(
 ) : NewsRepository {
     override suspend fun getNews(): Flow<Result<List<NewsItem>>> = flow {
         try {
-            val response: NewsResponse = client.get(BASE_URL+ "top-headlines") {
+            val response: NewsResponse = client.get(BASE_URL + "top-headlines") {
                 url {
                     parameters.append("apiKey", "490b461d624041878ae288088031eec7")
                     parameters.append("country", "us")

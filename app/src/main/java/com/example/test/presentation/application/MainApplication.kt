@@ -1,7 +1,7 @@
 package com.example.test.presentation.application
 
 import android.app.Application
-import com.example.test.appModules
+import com.example.test.data.di.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext
 

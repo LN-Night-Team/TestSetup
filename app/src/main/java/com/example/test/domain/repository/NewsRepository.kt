@@ -1,6 +1,5 @@
-package com.example.test.domain
+package com.example.test.domain.repository
 
-import com.example.test.data.NewsResponse
 import com.example.test.domain.entities.NewsItem
 import kotlinx.coroutines.flow.Flow
 
