@@ -7,7 +7,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
-import com.example.test.presentation.MainScreen
+import com.example.test.presentation.ui.DetailScreen
+import com.example.test.presentation.ui.MainScreen
 import com.example.test.presentation.viewmodel.MainViewModel
 
 @Composable
@@ -26,7 +27,9 @@ fun NewsApp(modifier: Modifier = Modifier, viewModel: MainViewModel) {
                 }
 
                 is DetailScreen -> NavEntry(key) {
-                   Text("${key.navItem}")
+                    DetailScreen(newsItem = key.navItem){
+                        backStack.removeLastOrNull()
+                    }
                 }
 
                 else -> NavEntry(Unit) {
