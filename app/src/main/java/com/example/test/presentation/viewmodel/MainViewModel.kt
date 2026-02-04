@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.test.domain.usecases.NewsUseCase
-import com.example.test.presentation.navigation.NavNewsItem
-import com.example.test.presentation.navigation.toPresentation
+import com.example.test.presentation.navigation.model.ArgsNewsItem
+import com.example.test.presentation.navigation.model.toPresentation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val newsUseCase: NewsUseCase
 ) : ViewModel() {
-    private val _news = MutableStateFlow<List<NavNewsItem>>(emptyList())
+    private val _news = MutableStateFlow<List<ArgsNewsItem>>(emptyList())
     val news = _news.asStateFlow()
 
     init {

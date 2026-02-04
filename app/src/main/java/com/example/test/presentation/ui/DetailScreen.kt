@@ -26,11 +26,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.test.presentation.navigation.NavNewsItem
+import com.example.test.presentation.navigation.model.ArgsNewsItem
 
 @Composable
 fun DetailScreen(
-    modifier: Modifier = Modifier, newsItem: NavNewsItem,
+    modifier: Modifier = Modifier, newsItem: ArgsNewsItem,
     onBackClicked: () -> Unit
 ) {
     Column(
