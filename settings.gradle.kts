@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Test"
 include(":androidApp")
 include(":shared")
+include(":feature:detailsFeature")

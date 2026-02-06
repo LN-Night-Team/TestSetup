@@ -1,4 +1,4 @@
-package com.example.shared.presentation.navigation
+package com.example.test.ui.navigation
 
 import androidx.navigation3.runtime.NavKey
 import com.example.shared.presentation.ArgsNewsItem
