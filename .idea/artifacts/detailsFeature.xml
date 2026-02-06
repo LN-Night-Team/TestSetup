@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="detailsFeature">
+    <output-path>$PROJECT_DIR$/feature/detailsFeature/build/libs</output-path>
+    <root id="archive" name="detailsFeature.jar">
+      <element id="module-output" name="Test.feature.detailsFeature.androidMain" />
+    </root>
+  </artifact>
+</component>
