@@ -1,4 +1,4 @@
-package com.example.test.presentation
+package com.example.test.presentation.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -43,12 +43,12 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.example.test.R
-import com.example.test.presentation.navigation.NavNewsItem
+import com.example.test.presentation.navigation.model.ArgsNewsItem
 import com.example.test.presentation.viewmodel.MainViewModel
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel,
-               onClick: (NavNewsItem) -> Unit) {
+               onClick: (ArgsNewsItem) -> Unit) {
     Scaffold(
         modifier.fillMaxSize()
     ) { innerPadding ->
@@ -130,7 +130,7 @@ fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel,
 }
 
 @Composable
-fun CustomTextField(onValueChange: () -> Unit, value: String) {
+private fun CustomTextField(onValueChange: () -> Unit, value: String) {
     OutlinedTextField(
         onValueChange = { onValueChange() },
         value = value,
@@ -142,8 +142,8 @@ fun CustomTextField(onValueChange: () -> Unit, value: String) {
 }
 
 @Composable
-fun NewsCard(
-    modifier: Modifier = Modifier, newsItem: NavNewsItem,
+private fun NewsCard(
+    modifier: Modifier = Modifier, newsItem: ArgsNewsItem,
     onClick: () -> Unit
 ) {
     Column(

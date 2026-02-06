@@ -7,11 +7,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
-import com.example.test.presentation.MainScreen
+import com.example.test.presentation.ui.DetailScreen
+import com.example.test.presentation.ui.MainScreen
 import com.example.test.presentation.viewmodel.MainViewModel
+import com.example.test.presentation.navigation.Destinations.*
 
 @Composable
-fun NewsApp(modifier: Modifier = Modifier, viewModel: MainViewModel) {
+fun NavGraph(modifier: Modifier = Modifier, viewModel: MainViewModel) {
     val backStack = remember { mutableStateListOf<Any>(HomeScreen) }
 
     NavDisplay(
@@ -20,13 +22,15 @@ fun NewsApp(modifier: Modifier = Modifier, viewModel: MainViewModel) {
         entryProvider = { key ->
             when (key) {
                 is HomeScreen -> NavEntry(key) {
-                    MainScreen(modifier, viewModel){ item ->
+                    MainScreen(modifier, viewModel) { item ->
                         backStack.add(DetailScreen(navItem = item))
                     }
                 }
 
                 is DetailScreen -> NavEntry(key) {
-                   Text("${key.navItem}")
+                    DetailScreen(newsItem = key.navItem) {
+                        backStack.removeLastOrNull()
+                    }
                 }
 
                 else -> NavEntry(Unit) {

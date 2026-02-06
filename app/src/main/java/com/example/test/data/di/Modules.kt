@@ -15,7 +15,7 @@ import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val BASE_URL = "https://newsapi.org/v2/"
+const val BASE_URL = "https://newsapi.org/v2/"
 val networkModule = module {
     single {
         HttpClient(OkHttp) {
